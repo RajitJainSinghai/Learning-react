@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.boxes {
+  display: flex;
+  height: 80px;
+  width: 80px;
+  border-radius: 10px;
+  border: 4px solid darkred;
+  cursor: pointer;
+}
+.boxes img {
+  padding: 20px;
+}
+.board {
+  width: 100%;
+  height: auto;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  margin-bottom: 20px;
+
+}
+h1 img {
+  width: 20px;
+  height: 20px;
+}
