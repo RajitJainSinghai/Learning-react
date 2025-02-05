@@ -1,0 +1,48 @@
+@import "tailwindcss";
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Style the header */
+  header {
+    background-color: #282c34;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Style the heading */
+  header h1 {
+    font-size: 1.5rem;
+  }
+  
+  /* Navigation buttons */
+  .nav-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  button {
+    background-color: #61dafb;
+    color: black;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #21a1f1;
+  }
+  img {
+    height: 300px;
+    width: 300px;
+  }
