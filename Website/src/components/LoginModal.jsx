@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { account } from '../appwrite';
 import './LoginModal.css';
 
-const LoginModal = ({ setLoggedIn, onClose }) => {
+const LoginModal = ({ setLoggedIn, setUsername, onClose }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
@@ -12,7 +13,9 @@ const LoginModal = ({ setLoggedIn, onClose }) => {
     e.preventDefault();
     try {
       await account.createEmailPasswordSession(email, password);
+      const user = await account.get();
       setLoggedIn(true);
+      setUsername(user.name || 'User');
       onClose();
     } catch (err) {
       setError(err.message);
@@ -22,9 +25,11 @@ const LoginModal = ({ setLoggedIn, onClose }) => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await account.create('unique()', email, password);
+      await account.create('unique()', email, password, name);
       await account.createEmailPasswordSession(email, password);
+      const user = await account.get();
       setLoggedIn(true);
+      setUsername(user.name || 'User');
       onClose();
     } catch (err) {
       setError(err.message);
@@ -38,6 +43,7 @@ const LoginModal = ({ setLoggedIn, onClose }) => {
         <h2>{isLogin ? 'Login' : 'Signup'}</h2>
         {error && <p className="error">{error}</p>}
         <form onSubmit={isLogin ? handleLogin : handleSignup}>
+          {!isLogin && <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />}
           <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
           <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
           <button type="submit">{isLogin ? 'Login' : 'Signup'}</button>
