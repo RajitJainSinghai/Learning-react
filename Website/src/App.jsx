@@ -10,6 +10,7 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
   const [showLogin, setShowLogin] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // Added loading state
   const navigate = useNavigate();
 
   const fetchUserDetails = async () => {
@@ -20,6 +21,8 @@ const App = () => {
     } catch {
       setIsLoggedIn(false);
       setUsername('');
+    } finally {
+      setIsLoading(false); // Update loading state after fetching
     }
   };
 
@@ -37,14 +40,17 @@ const App = () => {
   return (
     <div>
       <header>
-        <h1>Car Explorer</h1>
+        <h1 className='desktopview'>Car Explorer</h1>
+        <h1 className='mobileview'>C</h1>
         <nav>
           <Link to="/">Home</Link>
-          {isLoggedIn && <span>Welcome, {username}</span>}
-          {isLoggedIn ? (
-            <button onClick={handleLogout}>Logout</button>
-          ) : (
-            <button onClick={() => setShowLogin(true)}>Login / Signup</button>
+          {!isLoading && isLoggedIn && <span>Welcome, {username}</span>}
+          {!isLoading && (
+            isLoggedIn ? (
+              <button onClick={handleLogout}>Logout</button>
+            ) : (
+              <button onClick={() => setShowLogin(true)}>Login / Signup</button>
+            )
           )}
         </nav>
       </header>
@@ -60,5 +66,3 @@ const App = () => {
 };
 
 export default App;
-
-console. disableYellowBox = true

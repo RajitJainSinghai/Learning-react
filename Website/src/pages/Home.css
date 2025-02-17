@@ -41,5 +41,38 @@ nav {
   align-items: center;
   gap: 30px;
   justify-content: end;
+}
+.desktopview {
+  display: block;
+}
+.mobileview {
+  display: none;
+}
 
+@media screen and (max-width: 600px) {
+  .car-grid {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+.car-item {
+  width: 46%;
+}
+.desktopview {
+  display: none;
+}
+.mobileview {
+  display: block;
+}
+nav {
+  display: flex;
+  width: 90%;
+  gap: 5px;
+  justify-content: space-between;
+
+}
+header {
+  padding: 15px 10px;
+}
 }

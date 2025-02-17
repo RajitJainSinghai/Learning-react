@@ -15,7 +15,7 @@ const cars = [
   { id: 9, name: 'Bugatti', image: 'https://images.pexels.com/photos/248687/pexels-photo-248687.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' }
 ];
 
-const Home = ({ isLoggedIn, setIsLoggedIn }) => {
+const Home = ({ isLoggedIn, setIsLoggedIn, setUsername }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedCar, setSelectedCar] = useState(null);
 
@@ -48,6 +48,7 @@ const Home = ({ isLoggedIn, setIsLoggedIn }) => {
       {showModal && (
         <LoginModal 
           setLoggedIn={setIsLoggedIn} 
+          setUsername={setUsername}  // Pass setUsername here
           onClose={() => setShowModal(false)} 
           selectedCar={selectedCar}
         />

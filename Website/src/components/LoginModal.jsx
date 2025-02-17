@@ -15,7 +15,7 @@ const LoginModal = ({ setLoggedIn, setUsername, onClose }) => {
       await account.createEmailPasswordSession(email, password);
       const user = await account.get();
       setLoggedIn(true);
-      setUsername(user.name || 'User');
+      setUsername(user.name || 'User');  // Ensure username is set
       onClose();
     } catch (err) {
       setError(err.message);
@@ -29,7 +29,7 @@ const LoginModal = ({ setLoggedIn, setUsername, onClose }) => {
       await account.createEmailPasswordSession(email, password);
       const user = await account.get();
       setLoggedIn(true);
-      setUsername(user.name || 'User');
+      setUsername(user.name || 'User');  // Ensure username is set
       onClose();
     } catch (err) {
       setError(err.message);
